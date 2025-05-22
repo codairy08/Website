@@ -1,36 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Website - Home</title>
+  <title>Codairy - Home</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="logo">MyWebsite</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container">
+    <h1 class="logo">Codairy</h1>
+    <button class="nav-toggle" id="navToggle">&#9776;</button> <!-- Hamburger -->
+    <nav id="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+<li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+<li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+<li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <main>
     <section class="hero">
-      <h2>Welcome to My Website</h2>
+      <h2>Welcome to Codairy</h2>
       <p>Your one-stop solution for web excellence.</p>
     </section>
+
+    <section class="features">
+      <div class="container">
+        <h2>What We Offer</h2>
+        <div class="feature-cards">
+          <div class="card">
+            <h3>Web Development</h3>
+            <p>Modern, responsive, and fast websites built with the latest technology.</p>
+          </div>
+          <div class="card">
+            <h3>UI/UX Design</h3>
+            <p>Clean, user-friendly interfaces to enhance your users' experience.</p>
+          </div>
+          <div class="card">
+            <h3>SEO Optimization</h3>
+            <p>Boost your online visibility and reach more customers effectively.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Cards Section -->
+<section class="cards-section">
+  <div class="container">
+    <h2>Our Highlights</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Fast Performance</h3>
+        <p>Experience blazing fast loading times for your website.</p>
+      </div>
+      <div class="card">
+        <h3>Secure Hosting</h3>
+        <p>We use HTTPS, SSL, and other security practices to keep you safe.</p>
+      </div>
+      <div class="card">
+        <h3>Easy to Edit</h3>
+        <p>Update your content easily with modern tools and support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Table Section -->
+<section class="table-section">
+  <div class="container">
+    <!--<h2>Available Data List</h2>-->
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Student Records</td>
+          <td>List of all registered students for 2025 session</td>
+          <td>CSV</td>
+          <td><a href="files/student-records.csv" target="_blank">Download</a></td>
+        </tr>
+        <tr>
+          <td>Course Catalog</td>
+          <td>Detailed catalog of available courses and subjects</td>
+          <td>PDF</td>
+          <td><a href="files/course-catalog.pdf" target="_blank">View</a></td>
+        </tr>
+        <tr>
+          <td>Contact Submissions</td>
+          <td>Messages sent via the contact form</td>
+          <td>Realtime</td>
+          <td><a href="dashboard.html">View Dashboard</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
   </main>
 
-  <footer>
-    <p>&copy; 2025 MyWebsite. All rights reserved.</p>
-  </footer>
+ <footer>
+  <div class="simple-footer">
+    <p>&copy; 2025 Codairy. Managed by SK Samrat.</p>
+    <p id="liveDateTime"></p>
+  </div>
+</footer>
 
   <script src="script.js"></script>
 </body>

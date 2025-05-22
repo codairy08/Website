@@ -1,2 +1,208 @@
-<h2>Contact Us</h2>
-<p>Email: contact@mywebsite.com</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Enhanced</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --primary-dark: #0056b3;
+      --light-bg: #f0f4f8;
+      --form-bg: #fff;
+      --text-color: #333;
+      --error-color: #dc3545;
+      --success-color: #28a745;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--light-bg);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    #contact-form {
+      background: var(--form-bg);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 600;
+      min-height: 24px;
+      white-space: pre-line;
+    }
+
+    .status-success {
+      color: var(--success-color);
+    }
+
+    .status-error {
+      color: var(--error-color);
+    }
+
+    @media (max-width: 600px) {
+      #contact-form {
+        padding: 25px 20px;
+      }
+
+      button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form id="contact-form" onsubmit="event.preventDefault(); submitContactForm();">
+    <h2>Contact Us</h2>
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter Your Name" required />
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" placeholder="Enter Your Email" required />
+
+    <label for="message">Your Message</label>
+    <textarea id="message" placeholder="Type your message here..." rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+    <p id="status"></p>
+  </form>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCsiOJNMpcfgzlwo4oBkAcaB4cW0Y9XUt0",
+      authDomain: "codairy-08.firebaseapp.com",
+      projectId: "codairy-08",
+      storageBucket: "codairy-08.firebasestorage.app",
+      messagingSenderId: "989011204034",
+      appId: "1:989011204034:web:f143d5416ed261e0f7285b",
+      measurementId: "G-ZPB4P5DF7Q"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const statusEl = document.getElementById('status');
+
+    async function getIP() {
+      try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        return data.ip || 'Unknown IP';
+      } catch {
+        return 'Unknown IP';
+      }
+    }
+
+    function getCurrentDateTime() {
+      return new Date().toLocaleString();
+    }
+
+    async function submitContactForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        statusEl.className = 'status-error';
+        statusEl.textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      statusEl.className = '';
+      statusEl.textContent = 'Sending... Please wait.';
+
+      const ip = await getIP();
+      const currentDateTime = getCurrentDateTime();
+
+      db.collection('contacts').add({
+        name,
+        email,
+        message,
+        ip,
+        submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        clientDateTime: currentDateTime
+      })
+      .then(() => {
+        statusEl.className = 'status-success';
+        statusEl.textContent = `Thanks, ${name}! Your message was sent successfully.\nIP: ${ip}\nTime: ${currentDateTime}`;
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      })
+      .catch(error => {
+        statusEl.className = 'status-error';
+        statusEl.textContent = 'Error sending message: ' + error.message;
+      });
+    }
+  </script>
+  
+</body>
+</html>
