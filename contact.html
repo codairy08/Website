@@ -1,208 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us - Enhanced</title>
-  <style>
-    :root {
-      --primary: #007bff;
-      --primary-dark: #0056b3;
-      --light-bg: #f0f4f8;
-      --form-bg: #fff;
-      --text-color: #333;
-      --error-color: #dc3545;
-      --success-color: #28a745;
-      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+	<!-- Meta Tags -->
+	<meta charset="UTF-8">
+	<meta name="description" content="KM Online Works">
+	<meta name="keywords" content="KM Online Works">
+	<meta name="author" content="Kamran Mubarik">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS Links -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-main);
-      background: var(--light-bg);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      min-height: 100vh;
-    }
-
-    #contact-form {
-      background: var(--form-bg);
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      width: 100%;
-    }
-
-    h2 {
-      margin-bottom: 25px;
-      color: var(--primary);
-      text-align: center;
-    }
-
-    label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      margin-bottom: 20px;
-      padding: 12px 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-    }
-
-    button {
-      width: 100%;
-      background-color: var(--primary);
-      color: #fff;
-      font-weight: 600;
-      font-size: 18px;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: var(--primary-dark);
-    }
-
-    #status {
-      margin-top: 20px;
-      text-align: center;
-      font-weight: 600;
-      min-height: 24px;
-      white-space: pre-line;
-    }
-
-    .status-success {
-      color: var(--success-color);
-    }
-
-    .status-error {
-      color: var(--error-color);
-    }
-
-    @media (max-width: 600px) {
-      #contact-form {
-        padding: 25px 20px;
-      }
-
-      button {
-        font-size: 16px;
-      }
-    }
-  </style>
+	<title>Contact</title>
 </head>
-<body>
-  <form id="contact-form" onsubmit="event.preventDefault(); submitContactForm();">
-    <h2>Contact Us</h2>
-    <label for="name">Your Name</label>
-    <input type="text" id="name" placeholder="Enter Your Name" required />
-
-    <label for="email">Your Email</label>
-    <input type="email" id="email" placeholder="Enter Your Email" required />
-
-    <label for="message">Your Message</label>
-    <textarea id="message" placeholder="Type your message here..." rows="5" required></textarea>
-
-    <button type="submit">Send Message</button>
-    <p id="status"></p>
+<body onload="preloader()">
+	<div id="preloader">
+		<div class="lds-ripple">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="container" id="wrapper">
+		<div class="row">
+			<div class="col-md-3" id="sidebar">
+				<div class="logo">
+					<img src="img/logo.png" alt="logo">
+				</div>
+				<ul class="nav flex-column">
+					<li class="nav-item">						 
+						<a class="nav-link" href="index.html"><i class="fal fa-home-alt"></i> Home</a>
+					</li>
+					<li class="nav-item">						 
+						<a class="nav-link" href="portfolio.html"><i class="fal fa-tasks"></i> Portfolio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html"><i class="fal fa-info"></i> About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="contact.html"><i class="fal fa-address-card"></i> Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="download.html"><i class="fal fa-download"></i> Download</a>
+					</li>
+				</ul>
+				<i class="far fa-ellipsis-v"></i>
+				<div class="copyright">
+					<p>&copy; 2025 | Codairy. Managed By SK SAMRAT.</p>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div id="main-area">
+					<div class="content-section contact">						
+						<div class="row">
+							<div class="col-md-5 order-md-2">
+								<div class="card" style="width: 100%;">
+									<div class="card-body">
+								        <h5 class="card-title">Any Quary</h5>
+								        <img src="img/logo.png" alt="km online works">
+								        <p class="card-text"><i class="fal fa-envelope"></i> <a href="mailto:samrat.codairy@gmail.com" style="color:#fff;">samrat.codairy@gmail.com</a></p>
+								        <p class="card-text">
+								        	<a href="https://www.facebook.com/codairy" style="color: white;">
+								        		<i class="fab fa-facebook"></i> Follow Facebook
+								        	</a>
+								        </p>
+								        <p class="card-text">
+								        	<a href="https://instagram.com/mr_samrat87" style="color: white;">
+								        		  <i class="fab fa-instagram"></i> Instagram
+								        	</a>
+								        </p>
+								     </div>
+								</div>
+							</div>
+							<div class="col-lg-7 col-md-7 order-lg-1">
+								<div class="card" style="width: 100%;">
+									<div class="section-description">
+										<h2 class="display-4"><i class="fal fa-pencil"></i> Get in Touch</h2>
+									</div>
+								<form id="contactForm">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" class="form-control" id="name" required>
+    </div>
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="email" class="form-control" id="email" required>
+      <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea class="form-control" id="message" required></textarea>
+    </div>									  
+    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
   </form>
+								</div>
+							</div>
+						</div>						
+					</div> <!-- Content Section End -->
+					<div class="footer">
+						<div class="row">													
+							<div class="col-lg-4 col-md-12 order-lg-2"></div>
+							<div class="col-lg-8 col-md-12 order-lg-1 social-links">
+								<div class="social-links">
+									<a href="https://Codairy.in">
+										<i class="fas fa-globe"></i> Website
+									</a>
+									<a href="mailto:samrat.codairy@gmail.com">
+										<i class="fal fa-envelope"></i> Email
+									</a>
+									<a href="https://web.facebook.com/codairy">
+										<i class="fab fa-facebook"></i> Facebook
+									</a>
+								</div>								
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCsiOJNMpcfgzlwo4oBkAcaB4cW0Y9XUt0",
-      authDomain: "codairy-08.firebaseapp.com",
-      projectId: "codairy-08",
-      storageBucket: "codairy-08.firebasestorage.app",
-      messagingSenderId: "989011204034",
-      appId: "1:989011204034:web:f143d5416ed261e0f7285b",
-      measurementId: "G-ZPB4P5DF7Q"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const statusEl = document.getElementById('status');
-
-    async function getIP() {
-      try {
-        const res = await fetch('https://api.ipify.org?format=json');
-        const data = await res.json();
-        return data.ip || 'Unknown IP';
-      } catch {
-        return 'Unknown IP';
-      }
-    }
-
-    function getCurrentDateTime() {
-      return new Date().toLocaleString();
-    }
-
-    async function submitContactForm() {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !message) {
-        statusEl.className = 'status-error';
-        statusEl.textContent = 'Please fill in all fields.';
-        return;
-      }
-
-      statusEl.className = '';
-      statusEl.textContent = 'Sending... Please wait.';
-
-      const ip = await getIP();
-      const currentDateTime = getCurrentDateTime();
-
-      db.collection('contacts').add({
-        name,
-        email,
-        message,
-        ip,
-        submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
-        clientDateTime: currentDateTime
-      })
-      .then(() => {
-        statusEl.className = 'status-success';
-        statusEl.textContent = `Thanks, ${name}! Your message was sent successfully.\nIP: ${ip}\nTime: ${currentDateTime}`;
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('message').value = '';
-      })
-      .catch(error => {
-        statusEl.className = 'status-error';
-        statusEl.textContent = 'Error sending message: ' + error.message;
-      });
-    }
-  </script>
-  
+	<!-- Firebase & jQuery CDN (in <head> or before closing </body>) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- JS Script Files -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/custom-function.js"></script>
 </body>
 </html>
